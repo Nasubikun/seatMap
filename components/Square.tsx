@@ -44,7 +44,6 @@ const Square = ({id}) => {
     // お客さんの入店時間（空席の場合はnull）
     const [enteringTime,setEnteringTime] = useState(null);
 
-    const [selectedValue, setSelectedValue] = useState("test");
 
     const [count,setCount] = useState(0);
 
@@ -66,9 +65,8 @@ const Square = ({id}) => {
       setOpen(true);
     };
   
-    const handleClose = (value) => {
+    const handleClose = () => {
       setOpen(false);
-      setSelectedValue(value);
     };
 
     const handleSeatClick = () =>{
@@ -80,12 +78,14 @@ const Square = ({id}) => {
     }
 
     const handleEnter = () =>{
-        setEnteringTime(new Date())
+        setEnteringTime(new Date());
+        setOpen(false);
     }
 
     const handleExit = () =>{
         alert(`滞在時間は${parseEnteringTimeAsSecond(enteringTime)}でした。`)
-        setEnteringTime(null)
+        setEnteringTime(null);
+        setOpen(false);
     }
 
     const parseEnteringTime = (enteringTime) =>{
@@ -110,7 +110,7 @@ const Square = ({id}) => {
             {enteringTime?<MdPerson/>:<MdEventSeat/>}
             <div>{parseEnteringTime(enteringTime)||"空席"}</div>
         </div>
-        <SeatDialog selectedValue={selectedValue} open={open} onClose={handleClose} handleEnter={handleEnter} handleExit={handleExit} enteringTime={enteringTime} elapsedTime={parseEnteringTime(enteringTime)}/>
+        <SeatDialog open={open} onClose={handleClose} handleEnter={handleEnter} handleExit={handleExit} enteringTime={enteringTime} elapsedTime={parseEnteringTime(enteringTime)}/>
         </div>
         :
         <div id={id} className={classes.squareRoot} onClick={()=>handleSeatClick()}>

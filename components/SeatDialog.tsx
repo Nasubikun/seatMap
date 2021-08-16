@@ -1,9 +1,9 @@
 import { Dialog, DialogTitle, Button, Typography } from '@material-ui/core'
 import React from 'react'
 
-const SeatDialog = ({ onClose, selectedValue, open, handleEnter, handleExit, enteringTime, elapsedTime }) => {
+const SeatDialog = ({ onClose, open, handleEnter, handleExit, enteringTime, elapsedTime }) => {
     const handleClose = () => {
-        onClose(selectedValue);
+        onClose();
       };
     return (
         <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>

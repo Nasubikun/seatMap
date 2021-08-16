@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     }
 })
 
-const IsEditingContext = createContext();
+const IsEditingContext = createContext({});
 
 export const useIsEditing = () =>{
     return useContext(IsEditingContext);

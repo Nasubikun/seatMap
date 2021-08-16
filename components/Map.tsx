@@ -37,7 +37,6 @@ const Map = () => {
     const [X,setX] = useState(Number(useLocalStorage("X",5)));
     const [Y,setY] = useState(Number(useLocalStorage("Y",4)));
 
-    console.log({X})
 
     useEffect(() => {
         localStorage.setItem("X",String(X))

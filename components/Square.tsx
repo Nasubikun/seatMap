@@ -78,14 +78,16 @@ const Square = ({id}) => {
     }
 
     const handleEnter = () =>{
-        setEnteringTime(new Date());
         setOpen(false);
+
+        setEnteringTime(new Date());
     }
 
     const handleExit = () =>{
+        setOpen(false);
         alert(`滞在時間は${parseEnteringTimeAsSecond(enteringTime)}でした。`)
         setEnteringTime(null);
-        setOpen(false);
+        console.log(open)
     }
 
     const parseEnteringTime = (enteringTime) =>{

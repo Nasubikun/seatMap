@@ -16,7 +16,7 @@ const Column = ({Y,id}) => {
 
     return (
         <div className={classes.columnRoot}>
-        {arr.map(item => <Square id={[id,item]}/>)}
+        {arr.map(item => <Square key={[id,item].join(',')} id={[id,item]}/>)}
         </div>
     )
 }

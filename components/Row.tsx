@@ -15,7 +15,7 @@ const Row = ({X,Y}) => {
 
     return (
         <div className={classes.rowRoot}>
-        {arr.map(item => <Column id={item} Y={Y}/>)}
+        {arr.map(item => <Column key={item} id={item} Y={Y}/>)}
         </div>
     )
 }

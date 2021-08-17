@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          <title>seatMap(demo)</title>
+
           {/* PWA primary color */}
           <meta name="theme-color" />
           <link

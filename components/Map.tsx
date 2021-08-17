@@ -1,9 +1,8 @@
 import { Button, makeStyles } from '@material-ui/core'
-import { useState,createContext, useEffect } from 'react'
+import { useState,createContext, useEffect,useContext } from 'react'
 import Row from './Row';
 import useIncrement from '../hooks/useIncrement';
 import Alert from '@material-ui/lab/Alert';
-import { useContext } from 'react';
 import dynamic from "next/dynamic";
 import {useLocalStorage} from '../hooks/useLocalStorage'
 import {MdChevronLeft,MdChevronRight,MdExpandLess,MdExpandMore} from 'react-icons/md'
@@ -31,6 +30,9 @@ const IsEditingContext = createContext({});
 export const useIsEditing = () =>{
     return useContext(IsEditingContext);
 }
+
+
+
 const Map = () => {
     const classes = useStyles();
     const [isEditing,setIsEditing] = useState(false);
@@ -58,8 +60,8 @@ const Map = () => {
             </div>
             {isEditing&&<Button onClick={()=>decrementY()}><MdExpandLess/></Button>}
             {isEditing&&<Button onClick={()=>incrementY()}><MdExpandMore/></Button>}
-            {isEditing?<Button variant="contained" color="secondary" onClick={()=>setIsEditing(false)}>完了</Button>:<Button variant="contained" color="primary" onClick={()=>setIsEditing(true)}>座席情報の編集</Button>}
         </div>
+        {isEditing?<Button variant="contained" color="secondary" onClick={()=>setIsEditing(false)}>完了</Button>:<Button variant="contained" color="primary" onClick={()=>setIsEditing(true)}>座席情報の編集</Button>}
         </IsEditingContext.Provider>
     )
 }

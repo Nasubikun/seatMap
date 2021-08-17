@@ -41,9 +41,19 @@ const Square = ({id}) => {
     // ダイアログの表示切替
     const [open, setOpen] = useState(false);
 
-    // お客さんの入店時間（空席の場合はnull）
-    const [enteringTime,setEnteringTime] = useState(null);
+    const tryTimeParse = (strTime) =>{
+        if(strTime){
+            console.log(new Date(strTime))
+            return new Date(strTime)
+        }else{
+            return null
+        }
+    }
 
+    // お客さんの入店時間（空席の場合はnull）
+    const [enteringTime,setEnteringTime] = useState(tryTimeParse(useLocalStorage("enteringTime"+String(id),null)));
+
+    console.log(enteringTime)
 
     const [count,setCount] = useState(0);
 
@@ -60,7 +70,12 @@ const Square = ({id}) => {
     useEffect(() => {
         localStorage.setItem("isSeat"+String(id),isSeat)
     }, [isSeat])
-  
+
+
+    useEffect(() => {
+        localStorage.setItem("enteringTime"+String(id),JSON.stringify(enteringTime))
+    }, [enteringTime])
+
     const handleClickOpen = () => {
       setOpen(true);
     };
@@ -89,6 +104,8 @@ const Square = ({id}) => {
         setEnteringTime(null);
         console.log(open)
     }
+
+
 
     const parseEnteringTime = (enteringTime) =>{
         if(enteringTime){

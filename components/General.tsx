@@ -1,7 +1,7 @@
 import DynamicMap from "./Map"
 import { useState,createContext, useEffect,useContext } from 'react'
 import { Button } from "@material-ui/core";
-import EditiInfoDialog from "./editInfoDialog";
+import EditiInfoDialog from "./EditInfoDialog";
 import dynamic from "next/dynamic";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
